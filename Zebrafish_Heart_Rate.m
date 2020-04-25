@@ -38,6 +38,10 @@ while hasFrame(videoReader)
 % Code to select region of interest on first frame of video
    if k == 0
         region = round(getPosition(imrect));
+        if region(3) > 90 || region(4) > 90
+            disp('Please restart the code and select a smaller region of interest')
+            return
+        end     
    end
    % Inserts the rectangle shape on each frame of the video
    insertShape(frame, 'rectangle', region);
@@ -69,7 +73,7 @@ plot(time_vector, diff_max_vel, time_vector, test_vector)
 
 [peak2,locs]= findpeaks(diff_max_vel,time_vector,'MinPeakProminence',.08)
 
-heartbeats = length(peak2)/2;
+heartbeats = length(peak2)/2
 
 Heart_Rate_bps = heartbeats/time    % Heart Rate in beats per second
 Heart_Rate_bpm = Heart_Rate_bps*60  % Heart Rate in beats per minute
