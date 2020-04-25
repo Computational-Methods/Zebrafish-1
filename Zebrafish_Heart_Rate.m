@@ -50,8 +50,8 @@ while hasFrame(videoReader)
    if k >= 1
         g_subset_previous = rgb2gray(subset_previous);
         g_subset_current = rgb2gray(subset_current);
-        subset_cat = cat(1, g_subset_previous, g_subset_current);
-        diff_max_vel(1,k) = mean(double(diff(subset_cat)), 'all');
+        subset_cat = cat(3, g_subset_previous, g_subset_current);
+        diff_max_vel(1,k) = mean(double(diff(subset_cat,1,3)), 'all');
    end
    k = k+1;
 
