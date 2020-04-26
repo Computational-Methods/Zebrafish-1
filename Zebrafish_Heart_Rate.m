@@ -1,4 +1,4 @@
-function heart_rate_bpm= Zebrafish_Heart_Rate(video)
+function [heartbeats, heart_rate_bps, heart_rate_bpm]= Zebrafish_Heart_Rate(video)
 % Input the movie to the function by typing the movie as a character array
 % e.g. Zebrafish_Heart_Rate('movie.mov')
 
@@ -77,5 +77,5 @@ plot(time_vector, diff_max_vel)
 
 heartbeats = length(peak2)/2
 
-Heart_Rate_bps = heartbeats/time    % Heart Rate in beats per second
-Heart_Rate_bpm = Heart_Rate_bps*60  % Heart Rate in beats per minute
+heart_rate_bps = heartbeats/time    % Heart Rate in beats per second
+heart_rate_bpm = heart_rate_bps*60  % Heart Rate in beats per minute
