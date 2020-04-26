@@ -1,14 +1,19 @@
 function heart_rate_bpm= Zebrafish_Heart_Rate(video)
+% Input the movie to the function by typing the movie as a character array
+% e.g. Zebrafish_Heart_Rate('movie.mov')
 
-videoReader = VideoReader(video)
-videoPlayer = vision.VideoPlayer
+videoReader = VideoReader(video);
+videoPlayer = vision.VideoPlayer;
 
 % Making the video fit the window
-set(0,'showHiddenHandles','on')
+set(0,'showHiddenHandles','on');
 figure = gcf ;  
-figure.findobj 
+figure.findobj; 
 fitwindow = figure.findobj ('TooltipString', 'Maintain fit to window');  
-fitwindow.ClickedCallback()  
+fitwindow.ClickedCallback();
+
+% ROI specification
+disp ('On the video use your mouse to select a rectangular shaped ROI that covers a small portion of the atrium (bottom part of the heart): ')
 
 % Playing the video
 k = 0;
@@ -65,13 +70,10 @@ distance = diff(peaks);
 time_between = distance./100;
 
 
-test_vector= ones(length(time_vector));
 
-test_vector= test_vector.*.7;
+plot(time_vector, diff_max_vel)
 
-plot(time_vector, diff_max_vel, time_vector, test_vector)
-
-[peak2,locs]= findpeaks(diff_max_vel,time_vector,'MinPeakProminence',.08)
+[peak2,locs]= findpeaks(diff_max_vel,time_vector,'MinPeakProminence',.08);
 
 heartbeats = length(peak2)/2
 
