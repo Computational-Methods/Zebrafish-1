@@ -13,7 +13,7 @@ fitwindow = figure.findobj ('TooltipString', 'Maintain fit to window');
 fitwindow.ClickedCallback();
 
 % ROI specification
-disp ('On the video use your mouse to select a rectangular shaped ROI that covers a small portion of the atrium (bottom part of the heart): ')
+disp ('On the video use your mouse to select a rectangular shaped ROI that covers a small portion of the ventricle (top part of the heart): ')
 
 % Playing the video
 k = 0;
@@ -56,7 +56,7 @@ while hasFrame(videoReader)
         g_subset_previous = rgb2gray(subset_previous);
         g_subset_current = rgb2gray(subset_current);
         subset_cat = cat(3, g_subset_previous, g_subset_current);
-        diff_mean_bright(1,k) = mean2(double(subset_cat));
+        diff_mean_bright(1,k) = mean(subset_cat(:));
    end
    k = k+1;
 
