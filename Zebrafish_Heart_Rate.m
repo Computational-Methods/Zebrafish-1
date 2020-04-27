@@ -2,7 +2,7 @@ function [heartbeats, heart_rate_bps, heart_rate_bpm]= Zebrafish_Heart_Rate(vide
 % Input the movie to the function by typing the movie as a character array
 % e.g. Zebrafish_Heart_Rate('movie.mov')
 
-videoReader = VideoReader(video);
+videoReader = VideoReader(video)
 videoPlayer = vision.VideoPlayer;
 
 % Making the video fit the window
@@ -56,7 +56,7 @@ while hasFrame(videoReader)
         g_subset_previous = rgb2gray(subset_previous);
         g_subset_current = rgb2gray(subset_current);
         subset_cat = cat(3, g_subset_previous, g_subset_current);
-        diff_max_vel(1,k) = mean(diff(double(subset_cat,1,3)), 'all');
+        diff_max_vel(1,k) = mean(diff(double(subset_cat),1,3), 'all');
    end
    k = k+1;
 
